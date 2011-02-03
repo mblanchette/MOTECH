@@ -2,13 +2,13 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.motechproject</groupId>
+		<groupId>org.motechproject.general</groupId>
 		<artifactId>motech-server</artifactId>
-		<version>0.1-SNAPSHOT</version>
+		<version>1.0-SNAPSHOT</version>
 	</parent>
-	<groupId>org.motechproject</groupId>
+	<groupId>org.motechproject.general</groupId>
 	<artifactId>motech-wsapi</artifactId>
-	<version>0.1-SNAPSHOT</version>
+	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>MoTeCH API</name>
 	<description>API for the MoTeCH mobile and server projects</description>
