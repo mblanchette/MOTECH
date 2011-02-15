@@ -123,7 +123,7 @@ public class ExpectedEncounterSchedule extends ExpectedCareScheduleImpl {
 					&& dueDate != null && lateDate != null) {
 				// Create new ExpectedEncounter if not expired, not satisfied,
 				// and due date and late date are defined
-				expectedCareBean.createExpectedEncounter(patient,
+				expectedCareBean.saveExpectedEncounter(patient,
 						encounterTypeName, minDate, dueDate, lateDate, maxDate,
 						event.getName(), name);
 			}

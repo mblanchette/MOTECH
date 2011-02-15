@@ -203,7 +203,7 @@ public class ANCScheduleTest extends TestCase {
 				expectedCareBean.getExpectedEncounters(patient, ancSchedule
 						.getName())).andReturn(expectedEncounterList);
 		expect(
-				expectedCareBean.createExpectedEncounter(eq(patient),
+				expectedCareBean.saveExpectedEncounter(eq(patient),
 						eq(ancSchedule.getEncounterTypeName()),
 						capture(minDateCapture), capture(dueDateCapture),
 						capture(lateDateCapture), eq((Date) null),

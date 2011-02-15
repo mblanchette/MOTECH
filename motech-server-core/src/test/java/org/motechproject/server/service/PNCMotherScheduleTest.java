@@ -126,21 +126,21 @@ public class PNCMotherScheduleTest extends TestCase {
 				expectedCareBean.getExpectedEncounters(patient, pncSchedule
 						.getName())).andReturn(expectedEncounterList);
 		expect(
-				expectedCareBean.createExpectedEncounter(eq(patient),
+				expectedCareBean.saveExpectedEncounter(eq(patient),
 						eq(pncSchedule.getEncounterTypeName()),
 						capture(minDate1Capture), capture(dueDate1Capture),
 						capture(lateDate1Capture), capture(maxDate1Capture),
 						eq(pnc1Event.getName()), eq(pncSchedule.getName())))
 				.andReturn(new ExpectedEncounter());
 		expect(
-				expectedCareBean.createExpectedEncounter(eq(patient),
+				expectedCareBean.saveExpectedEncounter(eq(patient),
 						eq(pncSchedule.getEncounterTypeName()),
 						capture(minDate2Capture), capture(dueDate2Capture),
 						capture(lateDate2Capture), capture(maxDate2Capture),
 						eq(pnc2Event.getName()), eq(pncSchedule.getName())))
 				.andReturn(new ExpectedEncounter());
 		expect(
-				expectedCareBean.createExpectedEncounter(eq(patient),
+				expectedCareBean.saveExpectedEncounter(eq(patient),
 						eq(pncSchedule.getEncounterTypeName()),
 						capture(minDate3Capture), capture(dueDate3Capture),
 						capture(lateDate3Capture), capture(maxDate3Capture),

@@ -234,6 +234,16 @@ public class ExpectedCareBeanImpl implements ExpectedCareBean {
 		expectedEncounter.setName(name);
 		expectedEncounter.setGroup(group);
 
+		return expectedEncounter;
+	}
+
+	public ExpectedEncounter saveExpectedEncounter(Patient patient,
+			String encounterTypeName, Date minDate, Date dueDate,
+			Date lateDate, Date maxDate, String name, String group) {
+
+		ExpectedEncounter expectedEncounter = createExpectedEncounter(patient,
+				encounterTypeName, minDate, dueDate, lateDate, maxDate, name,
+				group);
 		return saveExpectedEncounter(expectedEncounter);
 	}
 

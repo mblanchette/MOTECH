@@ -1,0 +1,88 @@
+<!--
+
+    MOTECH PLATFORM OPENSOURCE LICENSE AGREEMENT
+
+    Copyright (c) 2010 The Trustees of Columbia University in the City of
+    New York and Grameen Foundation USA.  All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are met:
+
+    1. Redistributions of source code must retain the above copyright notice,
+    this list of conditions and the following disclaimer.
+
+    2. Redistributions in binary form must reproduce the above copyright notice,
+    this list of conditions and the following disclaimer in the documentation
+    and/or other materials provided with the distribution.
+
+    3. Neither the name of Grameen Foundation USA, Columbia University, or
+    their respective contributors may be used to endorse or promote products
+    derived from this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY GRAMEEN FOUNDATION USA, COLUMBIA UNIVERSITY
+    AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
+    BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+    FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL GRAMEEN FOUNDATION
+    USA, COLUMBIA UNIVERSITY OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+    OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+    LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+    EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="pregnancyDemoANCSchedule" class="org.motechproject.server.service.impl.ExpectedDemoANCEncounterSchedule">
+		<property name="name" value="ANC" />
+		<property name="encounterTypeName" value="ANCVISIT" />
+		<property name="numberConceptName" value="ANTENATAL VISIT NUMBER" />
+		<property name="referenceEncounterTypeName" value="ANCREGVISIT" />
+		<property name="referenceConceptName" value="ESTIMATED DATE OF CONFINEMENT" />		
+		<property name="lateValue" value="1" />
+		<property name="latePeriod" value="week" />	
+		<property name="openmrsBean" ref="openmrsBean" />
+		<property name="expectedCareBean" ref="expectedCareBean" />
+		<property name="requirements">
+			<list>
+				<bean class="org.motechproject.server.service.impl.AliveRequirement" />
+			</list>
+		</property>
+		<property name="events">
+			<list>
+				<bean class="org.motechproject.server.service.ExpectedCareEvent">
+					<property name="name" value="ANC1" />
+					<property name="number" value="1" />
+					<property name="dueValue" value="0" />
+					<property name="duePeriod" value="day" />
+					<property name="lateValue" value="1" />
+					<property name="latePeriod" value="day" />					
+				</bean>
+				<bean class="org.motechproject.server.service.ExpectedCareEvent">
+					<property name="name" value="ANC2" />
+					<property name="number" value="2" />
+					<property name="dueValue" value="1" />
+					<property name="duePeriod" value="month" />
+					<property name="dueReferencePrevious" value="true" />				
+				</bean>
+				<bean class="org.motechproject.server.service.ExpectedCareEvent">
+					<property name="name" value="ANC3" />
+					<property name="number" value="3" />
+					<!-- Min in relation to ANC2 -->
+					<property name="minValue" value="2" />
+					<property name="minPeriod" value="week" />
+					<!-- Due in relation to EDD -->				
+					<property name="dueValue" value="-4" />
+					<property name="duePeriod" value="week" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+</beans>	

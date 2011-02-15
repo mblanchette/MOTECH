@@ -37,16 +37,25 @@ import java.util.Date;
 
 import org.apache.commons.collections.Predicate;
 import org.openmrs.Encounter;
+import org.openmrs.Obs;
 
 public class EncounterPredicate implements Predicate {
 
 	private Date minDate;
 	private Date maxDate;
+	private Integer visitNumber;
+	private String visitNumberConcept;
 
 	public boolean evaluate(Object input) {
 		if (input instanceof Encounter) {
 			Encounter enc = (Encounter) input;
 			Date encounterDate = enc.getEncounterDatetime();
+
+			boolean matchVisitNumber = true;
+			if (visitNumber != null && visitNumberConcept != null) {
+				matchVisitNumber = visitNumber
+						.equals(getEncounterVisitNumber(enc));
+			}
 
 			boolean afterMinDate = true;
 			if (minDate != null) {
@@ -58,9 +67,18 @@ public class EncounterPredicate implements Predicate {
 				beforeMaxDate = encounterDate.before(maxDate);
 			}
 
-			return afterMinDate && beforeMaxDate;
+			return matchVisitNumber && afterMinDate && beforeMaxDate;
 		}
 		return false;
+	}
+
+	protected Integer getEncounterVisitNumber(Encounter enc) {
+		for (Obs obs : enc.getAllObs()) {
+			if (obs.getConcept().isNamed(visitNumberConcept)) {
+				return obs.getValueNumeric().intValue();
+			}
+		}
+		return null;
 	}
 
 	public Date getMinDate() {
@@ -77,6 +95,22 @@ public class EncounterPredicate implements Predicate {
 
 	public void setMaxDate(Date maxDate) {
 		this.maxDate = maxDate;
+	}
+
+	public Integer getVisitNumber() {
+		return visitNumber;
+	}
+
+	public void setVisitNumber(Integer visitNumber) {
+		this.visitNumber = visitNumber;
+	}
+
+	public String getVisitNumberConcept() {
+		return visitNumberConcept;
+	}
+
+	public void setVisitNumberConcept(String visitNumberConcept) {
+		this.visitNumberConcept = visitNumberConcept;
 	}
 
 }

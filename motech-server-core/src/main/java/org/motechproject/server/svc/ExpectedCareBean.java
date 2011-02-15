@@ -89,6 +89,10 @@ public interface ExpectedCareBean {
 			String encounterTypeName, Date minDate, Date dueDate,
 			Date lateDate, Date maxDate, String name, String group);
 
+	public ExpectedEncounter saveExpectedEncounter(Patient patient,
+			String encounterTypeName, Date minDate, Date dueDate,
+			Date lateDate, Date maxDate, String name, String group);
+
 	public ExpectedEncounter saveExpectedEncounter(
 			ExpectedEncounter expectedEncounter);
 

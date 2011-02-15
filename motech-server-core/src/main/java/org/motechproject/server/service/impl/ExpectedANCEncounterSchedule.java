@@ -100,7 +100,7 @@ public class ExpectedANCEncounterSchedule extends ExpectedEncounterSchedule {
 						expectedEncounterList, expectedEncounterPredicate);
 
 				if (expectedEncounter == null) {
-					expectedCareBean.createExpectedEncounter(patient,
+					expectedCareBean.saveExpectedEncounter(patient,
 							encounterTypeName, minDate, nextANCDate, lateDate,
 							null, name, name);
 				}
