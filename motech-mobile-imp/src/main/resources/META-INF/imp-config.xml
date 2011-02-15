@@ -171,9 +171,7 @@
 		init-method="init">
             <property name="oxdFormDefResources">
                 <list>
-                    <value>${imp.oxd.oxdFormDefsResource1}</value>
                     <value>${imp.oxd.oxdFormDefsResource2}</value>
-                    <value>${imp.oxd.oxdFormDefsResource3}</value>
                 </list>
             </property>
             <property name="passwordEncoder">

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+
+    MOTECH PLATFORM OPENSOURCE LICENSE AGREEMENT
+
+    Copyright (c) 2010 The Trustees of Columbia University in the City of
+    New York and Grameen Foundation USA.  All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are met:
+
+    1. Redistributions of source code must retain the above copyright notice,
+    this list of conditions and the following disclaimer.
+
+    2. Redistributions in binary form must reproduce the above copyright notice,
+    this list of conditions and the following disclaimer in the documentation
+    and/or other materials provided with the distribution.
+
+    3. Neither the name of Grameen Foundation USA, Columbia University, or
+    their respective contributors may be used to endorse or promote products
+    derived from this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY GRAMEEN FOUNDATION USA, COLUMBIA UNIVERSITY
+    AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
+    BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+    FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL GRAMEEN FOUNDATION
+    USA, COLUMBIA UNIVERSITY OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+    OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+    LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+    EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-->
+
+<study description="MoTeCH query forms" name="Nurse Query">
+<form description="" name="General Query">
+<version description="" name="v1">
+<xform>&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+&lt;xf:xforms xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;xf:model&gt;
+    &lt;xf:instance id="gen-query"&gt;
+      &lt;gen-query id="20" name="General Query"&gt;
+        &lt;chpsid/&gt;
+        &lt;facilityid/&gt;
+        &lt;formname/&gt;
+        &lt;sender/&gt;
+        &lt;formtype&gt;query&lt;/formtype&gt;
+      &lt;/gen-query&gt;
+    &lt;/xf:instance&gt;
+    &lt;xf:bind id="chpsid" nodeset="/gen-query/chpsid" required="true()" type="xsd:int" constraint=". &amp;lt; 2147483647" message="Number too large. Keep under 2147483647"/&gt;
+    &lt;xf:bind id="facilityid" nodeset="/gen-query/facilityid" required="true()" type="xsd:int" constraint=". &amp;lt; 2147483647" message="Number too large. Keep under 2147483647"/&gt;
+    &lt;xf:bind id="formname" nodeset="/gen-query/formname" required="true()" type="xsd:string"/&gt;
+    &lt;xf:bind id="sender" constraint=". &amp;lt; 2147483647" message="Number too large. Keep under 2147483647" nodeset="/gen-query/sender" required="true()" type="xsd:int"/&gt;
+    &lt;xf:bind id="formtype" nodeset="/gen-query/formtype" required="true()" type="xsd:string" visible="false()"/&gt;
+  &lt;/xf:model&gt;
+  &lt;xf:group id="1"&gt;
+    &lt;xf:label&gt;Page1&lt;/xf:label&gt;
+    &lt;xf:input bind="chpsid"&gt;
+      &lt;xf:label&gt;Staff ID&lt;/xf:label&gt;
+    &lt;/xf:input&gt;
+    &lt;xf:input bind="facilityid"&gt;
+      &lt;xf:label&gt;Facility ID&lt;/xf:label&gt;
+    &lt;/xf:input&gt;
+    &lt;xf:select1 bind="formname"&gt;
+      &lt;xf:label&gt;Query type&lt;/xf:label&gt;
+      &lt;xf:item id="ancdefault-jf"&gt;
+        &lt;xf:label&gt;ANC  defaulters&lt;/xf:label&gt;
+        &lt;xf:value&gt;ancdefault-jf&lt;/xf:value&gt;
+      &lt;/xf:item&gt;
+    &lt;/xf:select1&gt;
+    &lt;xf:input bind="sender"&gt;
+      &lt;xf:label&gt;Response phone number&lt;/xf:label&gt;
+    &lt;/xf:input&gt;
+    &lt;xf:input bind="formtype"&gt;
+      &lt;xf:label&gt;formType&lt;/xf:label&gt;
+    &lt;/xf:input&gt;
+  &lt;/xf:group&gt;
+&lt;/xf:xforms&gt;
+</xform>
+<layout>&lt;Form id="20"&gt;
+  &lt;Page Text="Page1" Binding="Page1" Width="100%" Height="270px" backgroundColor=""&gt;
+    &lt;Item WidgetType="Label" Text="Staff ID" HelpText="Staff ID" Binding="chpsid" Left="20px" Top="20px" TabIndex="0" fontFamily="Verdana,'Lucida Grande','Trebuchet MS',Arial,Sans-Serif"/&gt;
+    &lt;Item WidgetType="TextBox" HelpText="Staff ID" Binding="chpsid" Left="100px" Top="20px" Width="200px" Height="25px" TabIndex="1" fontFamily="Verdana,'Lucida Grande','Trebuchet MS',Arial,Sans-Serif"/&gt;
+    &lt;Item WidgetType="Label" Text="Facility ID" HelpText="Facility ID" Binding="facilityid" Left="20px" Top="60px" TabIndex="0" fontFamily="Verdana,'Lucida Grande','Trebuchet MS',Arial,Sans-Serif"/&gt;
+    &lt;Item WidgetType="TextBox" HelpText="Facility ID" Binding="facilityid" Left="130px" Top="60px" Width="200px" Height="25px" TabIndex="2" fontFamily="Verdana,'Lucida Grande','Trebuchet MS',Arial,Sans-Serif"/&gt;
+    &lt;Item WidgetType="Label" Text="Query type" HelpText="Query type" Binding="formname" Left="20px" Top="100px" TabIndex="0" fontFamily="Verdana,'Lucida Grande','Trebuchet MS',Arial,Sans-Serif"/&gt;
+    &lt;Item WidgetType="ListBox" HelpText="Query type" Binding="formname" Left="120px" Top="100px" Width="200px" Height="25px" TabIndex="3" fontFamily="Verdana,'Lucida Grande','Trebuchet MS',Arial,Sans-Serif"/&gt;
+    &lt;Item WidgetType="Label" Text="Response phone number" HelpText="Response phone number" Binding="sender" Left="20px" Top="140px" TabIndex="0" fontFamily="Verdana,'Lucida Grande','Trebuchet MS',Arial,Sans-Serif"/&gt;
+    &lt;Item WidgetType="TextBox" HelpText="Response phone number" Binding="sender" Left="230px" Top="140px" Width="200px" Height="25px" TabIndex="4" fontFamily="Verdana,'Lucida Grande','Trebuchet MS',Arial,Sans-Serif"/&gt;
+    &lt;Item WidgetType="Label" Text="formType" HelpText="formType" Binding="formtype" Left="20px" Top="180px" TabIndex="0" fontFamily="Verdana,'Lucida Grande','Trebuchet MS',Arial,Sans-Serif"/&gt;
+    &lt;Item WidgetType="TextBox" HelpText="formType" Binding="formtype" Left="100px" Top="180px" Width="200px" Height="25px" TabIndex="5" fontFamily="Verdana,'Lucida Grande','Trebuchet MS',Arial,Sans-Serif"/&gt;
+    &lt;Item WidgetType="Button" Text="Submit" HelpText="submit" Binding="submit" Left="20px" Top="230px" Width="70px" Height="30px" TabIndex="0" fontFamily="Verdana,'Lucida Grande','Trebuchet MS',Arial,Sans-Serif"/&gt;
+    &lt;Item WidgetType="Button" Text="Cancel" HelpText="cancel" Binding="cancel" Left="220px" Top="230px" Width="70px" Height="30px" TabIndex="0" fontFamily="Verdana,'Lucida Grande','Trebuchet MS',Arial,Sans-Serif"/&gt;
+  &lt;/Page&gt;
+&lt;/Form&gt;</layout>
+<versionText locale="en">
+<xform>&lt;xform id="20"&gt;
+    &lt;text xpath="xforms/model/instance/gen-query[@name]" value="General Query"/&gt;
+    &lt;text xpath="xforms/group[@id='1']/label" value="Page1"/&gt;
+    &lt;text xpath="xforms/group[@id='1']/input[@bind='chpsid']/label" value="Staff ID"/&gt;
+    &lt;text xpath="xforms/group[@id='1']/input[@bind='facilityid']/label" value="Facility ID"/&gt;
+    &lt;text xpath="xforms/group[@id='1']/select1[@bind='formname']/label" value="Query type"/&gt;
+    &lt;text xpath="xforms/group[@id='1']/select1[@bind='formname']/item[@id='ancdefault-jf']/label" value="ANC  defaulters"/&gt;
+    &lt;text xpath="xforms/group[@id='1']/input[@bind='sender']/label" value="Response phone number"/&gt;
+    &lt;text xpath="xforms/group[@id='1']/input[@bind='formtype']/label" value="formType"/&gt;
+    &lt;text xpath="xforms/model/bind[@id='chpsid'][@message]" value="Number too large. Keep under 2147483647"/&gt;
+    &lt;text xpath="xforms/model/bind[@id='facilityid'][@message]" value="Number too large. Keep under 2147483647"/&gt;
+    &lt;text xpath="xforms/model/bind[@id='sender'][@message]" value="Number too large. Keep under 2147483647"/&gt;
+  &lt;/xform&gt;</xform>
+<layout>&lt;Form id="20"&gt;
+    &lt;text xpath="Form/Page[@Binding='Page1'][@Text]" value="Page1"/&gt;
+  &lt;/Form&gt;</layout>
+</versionText>
+</version>
+</form>
+</study>
