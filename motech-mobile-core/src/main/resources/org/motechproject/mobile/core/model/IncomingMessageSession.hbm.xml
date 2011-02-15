@@ -39,7 +39,7 @@
     <typedef class="org.motechproject.mobile.core.util.StringEnumUserType" name="incMessageSessionStatus">
         <param name="enumClassname">org.motechproject.mobile.core.model.IncMessageSessionStatus</param>
     </typedef>
-    <class name="IncomingMessageSessionImpl" table="incoming_message_session">
+    <class name="IncomingMessageSessionImpl" table="motechmodule_incoming_message_session">
         <id column="id" name="id" type="long">
             <generator class="assigned"/>
         </id>
@@ -53,7 +53,7 @@
         <property generated="always" insert="false" name="lastActivity" update="false">
             <column default="current_timestamp" name="last_activity" sql-type="timestamp"/>
         </property>
-    <!-- <list cascade="save-update" name="incomingMessages" table="incoming_messages_list">
+    <!-- <list cascade="save-update" name="incomingMessages" table="motechmodule_incoming_messages_list">
       <key not-null="true">
           <column name="incoming_message_session_id" />
       </key>

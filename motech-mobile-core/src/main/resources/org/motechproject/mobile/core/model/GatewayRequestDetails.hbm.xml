@@ -39,7 +39,7 @@
   <typedef class="org.motechproject.mobile.core.util.StringEnumUserType" name="messageType">
     <param name="enumClassname">org.motechproject.mobile.core.model.MessageType</param>
   </typedef>
-  <class lazy="false" name="GatewayRequestDetailsImpl" table="gateway_request_details">
+  <class lazy="false" name="GatewayRequestDetailsImpl" table="motechmodule_gateway_request_details">
     <id column="id" name="id" type="long">
       <generator class="assigned"/>
     </id>

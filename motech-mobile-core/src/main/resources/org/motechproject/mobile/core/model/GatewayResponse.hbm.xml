@@ -39,7 +39,7 @@
   <typedef class="org.motechproject.mobile.core.util.StringEnumUserType" name="mStatus">
     <param name="enumClassname">org.motechproject.mobile.core.model.MStatus</param>
   </typedef>
-  <class name="GatewayResponseImpl" table="gateway_response">
+  <class name="GatewayResponseImpl" table="motechmodule_gateway_response">
     <id column="id" name="id" type="long">
       <generator class="assigned"/>
     </id>

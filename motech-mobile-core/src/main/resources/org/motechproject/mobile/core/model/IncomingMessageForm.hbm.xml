@@ -39,7 +39,7 @@
     <typedef class="org.motechproject.mobile.core.util.StringEnumUserType" name="incMessageFormStatus">
     <param name="enumClassname">org.motechproject.mobile.core.model.IncMessageFormStatus</param>
   </typedef>
-  <class name="IncomingMessageFormImpl" table="incoming_message_form">
+  <class name="IncomingMessageFormImpl" table="motechmodule_incoming_message_form">
     <id column="id" name="id" type="long">
       <generator class="assigned"/>
     </id>
@@ -51,7 +51,7 @@
     <property generated="always" insert="false" name="lastModified" update="false">
       <column default="current_timestamp" name="last_modified" sql-type="timestamp"/>
     </property>
-    <map cascade="save-update delete-orphan" inverse="true" name="incomingMsgFormParameters" table="inc_message_form_parameter">
+    <map cascade="save-update delete-orphan" inverse="true" name="incomingMsgFormParameters" table="motechmodule_inc_message_form_parameter">
       <key column="incoming_message_form_id"/>
       <map-key column="name" type="string"/>
       <one-to-many class="IncomingMessageFormParameterImpl"/>

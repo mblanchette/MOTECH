@@ -276,6 +276,14 @@
 				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
 			</resource>
+			<resource>
+				<directory>${project.build.directory}/hbm-resources/org/motechproject/mobile/core/model</directory>
+				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>${project.build.directory}/hbm-resources/org/motechproject/mobile/omp/manager/intellivr</directory>
+				<filtering>true</filtering>
+			</resource>
 		</resources>
 		<testResources>
 			<testResource>
@@ -319,6 +327,26 @@
 				<configuration>
 					<verifyOmod>false</verifyOmod>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>unpack-hbm-resources</id>
+						<goals>
+							<goal>unpack-dependencies</goal>
+						</goals>
+						<phase>generate-resources</phase>
+						<configuration>
+							<outputDirectory>${project.build.directory}/hbm-resources</outputDirectory>
+							<includeGroupIds>${project.groupId}</includeGroupIds>
+							<includeArtifactIds>motech-mobile-core,motech-mobile-omp</includeArtifactIds>
+							<excludeTransitive>true</excludeTransitive>
+							<includes>**/*.hbm.xml</includes>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

@@ -39,7 +39,7 @@
     <typedef class="org.motechproject.mobile.core.util.StringEnumUserType" name="incMessageResponseStatus">
         <param name="enumClassname">org.motechproject.mobile.core.model.IncMessageResponseStatus</param>
     </typedef>
-    <class name="IncomingMessageResponseImpl" table="incoming_message_response">
+    <class name="IncomingMessageResponseImpl" table="motechmodule_incoming_message_response">
         <id column="id" name="id" type="long">
             <generator class="assigned"/>
         </id>

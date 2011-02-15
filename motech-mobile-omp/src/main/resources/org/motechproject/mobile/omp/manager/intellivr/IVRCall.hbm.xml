@@ -39,7 +39,7 @@
   <typedef class="org.motechproject.mobile.core.util.StringEnumUserType" name="ivrCallStatus">
     <param name="enumClassname">org.motechproject.mobile.omp.manager.intellivr.IVRCallStatus</param>
   </typedef>
-	<class name="IVRCall" table="ivr_call">
+	<class name="IVRCall" table="motechmodule_ivr_call">
 		<id name="id" column="ivr_call_id">
 			<generator class="native" />
 		</id>

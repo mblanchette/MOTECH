@@ -52,7 +52,7 @@
         <comment>
             change to enforce mandatory BP Diastolic on ANC java form.issue #444 in redmine
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="required" valueBoolean="false"  />
             <where>id=10000000000012</where>
         </update>
@@ -62,7 +62,7 @@
             change to add new field in incoming_message_form_parameter_definition for lochia odour for PNC (mother).
             documented as issue #606 in redmine
         </comment>
-       <insert tableName="incoming_message_form_parameter_definition">
+       <insert tableName="motechmodule_incoming_message_form_parameter_definition">
            <column name="id" valueNumeric="10000000000518"/>
            <column name="obj_vesion" valueNumeric="0"/>
            <column name="incoming_message_form_definition_id" valueNumeric="200000000000005"/>
@@ -80,7 +80,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motherMotechId in RegisterChild sms form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=53475686867887</where>
         </update>
@@ -91,7 +91,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for childMotechId in RegisterChild sms form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=7645645756876</where>
         </update>
@@ -102,7 +102,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in DeliveryNotify-jf form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=10000000000404</where>
         </update>
@@ -113,7 +113,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in MotherPNC-jf form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=10000000000504</where>
         </update>
@@ -124,7 +124,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in ChildPNC-jf form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=10000000000804</where>
         </update>
@@ -135,7 +135,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in ChildCWC-jf form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=10000000000904</where>
         </update>
@@ -146,7 +146,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in Abortion-jf form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=10000000000104</where>
         </update>
@@ -157,7 +157,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in ChildOPD-jf form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=10000000001605</where>
         </update>
@@ -168,7 +168,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in MotherOPD-jf form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=10000000001705</where>
         </update>
@@ -179,7 +179,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in ANC sms form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=434546463984501</where>
         </update>
@@ -190,7 +190,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in ANC sms form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=10000000000005</where>
         </update>
@@ -201,7 +201,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in Abortion sms form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=464546463987801</where>
         </update>
@@ -212,7 +212,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId,C1MotechId,C2MotechId,C3MotechId in Delivery sms form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id IN (473346463981210,473346463981216,473346463981222,473346463981201)</where>
         </update>
@@ -223,7 +223,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId, child1MotechId,child2MotechId,child3MotechId in Delivery-jf form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id In (10000000000203,10000000000217,10000000000225,10000000000233)</where>
         </update>
@@ -234,7 +234,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId  in PPC sms form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=254546463981101</where>
         </update>
@@ -245,7 +245,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in Death sms form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=154546463981441</where>
         </update>
@@ -256,7 +256,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in Death-jf form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=10000000000604</where>
         </update>
@@ -267,7 +267,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in TT-jf form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=10000000000704</where>
         </update>
@@ -278,7 +278,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in Child form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=064546463981701</where>
         </update>
@@ -289,7 +289,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in ChildOPD form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=879874663983211</where>
         </update>
@@ -300,7 +300,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in MotherOPD form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=695474663923331</where>
         </update>
@@ -311,7 +311,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in RegisterPatient-jf form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=10000000001005</where>
         </update>
@@ -322,7 +322,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motherMotechId in RegisterPatient-jf form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=10000000001017</where>
         </update>
@@ -333,7 +333,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in RegisterPregnancy-jf form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=10000000001104</where>
         </update>
@@ -344,7 +344,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in RegisterCWCChild-jf form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=10000000001304</where>
         </update>
@@ -355,7 +355,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in EditPatient-jf form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=10000000001404</where>
         </update>
@@ -366,7 +366,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in UpcomingCare sms form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=695474663923354</where>
         </update>
@@ -377,7 +377,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in UpcomingCare-jf form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=1232874663923354</where>
         </update>
@@ -388,7 +388,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in ViewPatient sms form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=695474663923356</where>
         </update>
@@ -399,7 +399,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in ViewPatient-jf form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id=1233174663923356</where>
         </update>
@@ -410,7 +410,7 @@
             change to make motechid required for Out Patient Visit.issue #739 in redmine.
             updating motechid required field for ChildOPD-jf and MotherOPD-jf form
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
 
             <column name="required" valueBoolean="true"  />
             <where>id IN (10000000001605,10000000001705)</where>
@@ -422,7 +422,7 @@
             change to set type field of form parameters to DELIVERYDATE. Partial fix for issue #586 in redmine.
             updating estDeliveryDate and expDeliveryDate fields for ANC-jf, RegisterPatient-jf and RegisterPregnancy-jf forms
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="parameter_type" value="DELIVERYDATE"  />
             <where>id IN (10000000001206,10000000001024,10000000001105)</where>
         </update>
@@ -433,7 +433,7 @@
             change to enforce id rules.issue #732 in redmine.
             changing id length for motechId in all forms
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="length" valueNumeric="7"  />
             <where>id In (53475686867887,7645645756876,10000000000404,10000000000504,10000000000804,10000000000904,10000000000104,10000000001605,10000000001705,434546463984501,10000000000005,464546463987801,473346463981210,473346463981216,473346463981222,473346463981201,10000000000203,10000000000217,10000000000225,10000000000233,254546463981101154546463981441,10000000000604,10000000000704,064546463981701,879874663983211,695474663923331,10000000001005,10000000001017,10000000001104,10000000001304,10000000001404,695474663923354,1232874663923354,695474663923356,1233174663923356,1233174663923356)</where>
         </update>
@@ -442,7 +442,7 @@
          <comment>
             Adding form [careHistory-jf]
         </comment>
-        <insert tableName="incoming_message_form_definition">
+        <insert tableName="motechmodule_incoming_message_form_definition">
             <column name="id" valueNumeric="200000000000018" />
             <column name="obj_vesion" valueNumeric="0" />
             <column name="form_code" value="CareHistory-jf" />
@@ -451,7 +451,7 @@
             <column name="send_response" valueBoolean="true"/>
             <column name="date_created" valueDate="2010-09-24 16:08:00" />
         </insert>
-        <insert tableName="incoming_message_form_parameter_definition">
+        <insert tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="id" valueNumeric="10000000001801" />
             <column name="obj_vesion" valueNumeric="0" />
             <column name="incoming_message_form_definition_id" valueNumeric="200000000000018" />
@@ -461,7 +461,7 @@
             <column name="required" valueBoolean="true"/>
             <column name="date_created" valueDate="2010-09-24 16:08:00" />
         </insert>
-        <insert tableName="incoming_message_form_parameter_definition">
+        <insert tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="id" valueNumeric="10000000001802" />
             <column name="obj_vesion" valueNumeric="0" />
             <column name="incoming_message_form_definition_id" valueNumeric="200000000000018" />
@@ -471,7 +471,7 @@
             <column name="required" valueBoolean="true"/>
             <column name="date_created" valueDate="2010-09-24 16:08:00" />
         </insert>
-        <insert tableName="incoming_message_form_parameter_definition">
+        <insert tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="id" valueNumeric="10000000001803" />
             <column name="obj_vesion" valueNumeric="0" />
             <column name="incoming_message_form_definition_id" valueNumeric="200000000000018" />
@@ -481,7 +481,7 @@
             <column name="required" valueBoolean="true"/>
             <column name="date_created" valueDate="2010-09-24 16:08:00" />
         </insert>
-        <insert tableName="incoming_message_form_parameter_definition">
+        <insert tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="id" valueNumeric="10000000001804" />
             <column name="obj_vesion" valueNumeric="0" />
             <column name="incoming_message_form_definition_id" valueNumeric="200000000000018" />
@@ -491,7 +491,7 @@
             <column name="required" valueBoolean="true"/>
             <column name="date_created" valueDate="2010-09-24 16:08:00" />
         </insert>
-        <insert tableName="incoming_message_form_parameter_definition">
+        <insert tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="id" valueNumeric="10000000001805" />
             <column name="obj_vesion" valueNumeric="0" />
             <column name="incoming_message_form_definition_id" valueNumeric="200000000000018" />
@@ -501,7 +501,7 @@
             <column name="required" valueBoolean="false"/>
             <column name="date_created" valueDate="2010-09-24 16:08:00" />
         </insert>
-        <insert tableName="incoming_message_form_parameter_definition">
+        <insert tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="id" valueNumeric="10000000001806" />
             <column name="obj_vesion" valueNumeric="0" />
             <column name="incoming_message_form_definition_id" valueNumeric="200000000000018" />
@@ -511,7 +511,7 @@
             <column name="required" valueBoolean="false"/>
             <column name="date_created" valueDate="2010-09-24 16:08:00" />
         </insert>
-        <insert tableName="incoming_message_form_parameter_definition">
+        <insert tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="id" valueNumeric="10000000001807" />
             <column name="obj_vesion" valueNumeric="0" />
             <column name="incoming_message_form_definition_id" valueNumeric="200000000000018" />
@@ -521,7 +521,7 @@
             <column name="required" valueBoolean="false"/>
             <column name="date_created" valueDate="2010-09-24 16:08:00" />
         </insert>
-        <insert tableName="incoming_message_form_parameter_definition">
+        <insert tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="id" valueNumeric="10000000001808" />
             <column name="obj_vesion" valueNumeric="0" />
             <column name="incoming_message_form_definition_id" valueNumeric="200000000000018" />
@@ -531,7 +531,7 @@
             <column name="required" valueBoolean="false"/>
             <column name="date_created" valueDate="2010-09-24 16:08:00" />
         </insert>
-        <insert tableName="incoming_message_form_parameter_definition">
+        <insert tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="id" valueNumeric="10000000001809" />
             <column name="obj_vesion" valueNumeric="0" />
             <column name="incoming_message_form_definition_id" valueNumeric="200000000000018" />
@@ -541,7 +541,7 @@
             <column name="required" valueBoolean="false"/>
             <column name="date_created" valueDate="2010-09-24 16:08:00" />
         </insert>
-        <insert tableName="incoming_message_form_parameter_definition">
+        <insert tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="id" valueNumeric="10000000001810" />
             <column name="obj_vesion" valueNumeric="0" />
             <column name="incoming_message_form_definition_id" valueNumeric="200000000000018" />
@@ -551,7 +551,7 @@
             <column name="required" valueBoolean="false"/>
             <column name="date_created" valueDate="2010-09-24 16:08:00" />
         </insert>
-        <insert tableName="incoming_message_form_parameter_definition">
+        <insert tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="id" valueNumeric="10000000001811" />
             <column name="obj_vesion" valueNumeric="0" />
             <column name="incoming_message_form_definition_id" valueNumeric="200000000000018" />
@@ -561,7 +561,7 @@
             <column name="required" valueBoolean="false"/>
             <column name="date_created" valueDate="2010-09-24 16:08:00" />
         </insert>
-        <insert tableName="incoming_message_form_parameter_definition">
+        <insert tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="id" valueNumeric="10000000001812" />
             <column name="obj_vesion" valueNumeric="0" />
             <column name="incoming_message_form_definition_id" valueNumeric="200000000000018" />
@@ -571,7 +571,7 @@
             <column name="required" valueBoolean="false"/>
             <column name="date_created" valueDate="2010-09-24 16:08:00" />
         </insert>
-        <insert tableName="incoming_message_form_parameter_definition">
+        <insert tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="id" valueNumeric="10000000001813" />
             <column name="obj_vesion" valueNumeric="0" />
             <column name="incoming_message_form_definition_id" valueNumeric="200000000000018" />
@@ -581,7 +581,7 @@
             <column name="required" valueBoolean="false"/>
             <column name="date_created" valueDate="2010-09-24 16:08:00" />
         </insert>
-        <insert tableName="incoming_message_form_parameter_definition">
+        <insert tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="id" valueNumeric="10000000001814" />
             <column name="obj_vesion" valueNumeric="0" />
             <column name="incoming_message_form_definition_id" valueNumeric="200000000000018" />
@@ -591,7 +591,7 @@
             <column name="required" valueBoolean="false"/>
             <column name="date_created" valueDate="2010-09-24 16:08:00" />
         </insert>
-        <insert tableName="incoming_message_form_parameter_definition">
+        <insert tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="id" valueNumeric="10000000001815" />
             <column name="obj_vesion" valueNumeric="0" />
             <column name="incoming_message_form_definition_id" valueNumeric="200000000000018" />
@@ -601,7 +601,7 @@
             <column name="required" valueBoolean="false"/>
             <column name="date_created" valueDate="2010-09-24 16:08:00" />
         </insert>
-        <insert tableName="incoming_message_form_parameter_definition">
+        <insert tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="id" valueNumeric="10000000001816" />
             <column name="obj_vesion" valueNumeric="0" />
             <column name="incoming_message_form_definition_id" valueNumeric="200000000000018" />
@@ -611,7 +611,7 @@
             <column name="required" valueBoolean="false"/>
             <column name="date_created" valueDate="2010-09-24 16:08:00" />
         </insert>
-        <insert tableName="incoming_message_form_parameter_definition">
+        <insert tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="id" valueNumeric="10000000001817" />
             <column name="obj_vesion" valueNumeric="0" />
             <column name="incoming_message_form_definition_id" valueNumeric="200000000000018" />
@@ -621,7 +621,7 @@
             <column name="required" valueBoolean="false"/>
             <column name="date_created" valueDate="2010-09-24 16:08:00" />
         </insert>
-        <insert tableName="incoming_message_form_parameter_definition">
+        <insert tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="id" valueNumeric="10000000001818" />
             <column name="obj_vesion" valueNumeric="0" />
             <column name="incoming_message_form_definition_id" valueNumeric="200000000000018" />
@@ -636,7 +636,7 @@
          <comment>
             Change urineGlucosePositive type from BOOLEAN to NUMERIC and adding length 2
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="parameter_type" value="NUMERIC"  />
             <column name="length" valueNumeric="2"  />
             <where>id=10000000000021</where>
@@ -644,32 +644,32 @@
     </changeSet>
     
     <changeSet context="update" id="1000000000000-38" author="joseph">
-        <update tableName="message_template">
+        <update tableName="motechmodule_message_template">
             <column name="template" value="Labour is different for each woman &amp; some signs show U are in labour.Contractions-when belly muscles tighten &amp; harden-will come regular &amp; hurt.They get stronger,longer &amp; more painful as birth gets close.U may feel pain in the low back &amp; cramps like a period.U may see a “show”-when the mucus plug that blocks neck of womb comes out &amp; looks jelly-like.If waters break &amp; U have contractions contact midwife &amp; get to clinic as babies can sometimes come fast.*From Mobile Midwife*." />
             <where>id=41</where>
         </update>
-        <update tableName="message_template">
+        <update tableName="motechmodule_message_template">
             <column name="template" value="Labour is different for each woman &amp; some signs show U are in labour.Contractions-when belly muscles tighten &amp; harden-will come regular &amp; hurt.They get stronger,longer &amp; more painful as birth gets close.U may feel pain in the low back &amp; cramps like a period.U may see a “show”-when the mucus plug that blocks neck of womb comes out &amp; looks jelly-like.If waters break &amp; U have contractions contact midwife &amp; get to clinic as babies can sometimes come fast.*From Mobile Midwife*.@@" />
             <where>id=181</where>
         </update>
-        <update tableName="message_template">
+        <update tableName="motechmodule_message_template">
             <column name="template" value="Labour is different for each woman &amp; some signs show U are in labour.Contractions-when belly muscles tighten &amp; harden-will come regular &amp; hurt.They get stronger,longer &amp; more painful as birth gets close.U may feel pain in the low back &amp; cramps like a period.U may see a “show”-when the mucus plug that blocks neck of womb comes out &amp; looks jelly-like.If waters break &amp; U have contractions contact midwife &amp; get to clinic as babies can sometimes come fast.*From Mobile Midwife*.##" />
             <where>id=182</where>
         </update>
     </changeSet>
 
     <changeSet context="update" dbms="hsqldb" id="1000000000000-39a" author="joseph">
-        <renameTable oldTableName="LANGUAGE" newTableName="languages" />
+        <renameTable oldTableName="MOTECHMODULE_LANGUAGE" newTableName="motechmodule_languages" />
     </changeSet>
     <changeSet context="update" dbms="mysql" id="1000000000000-39b" author="joseph">
-        <renameTable oldTableName="language" newTableName="languages" />
+        <renameTable oldTableName="motechmodule_language" newTableName="motechmodule_languages" />
     </changeSet>
 
     <changeSet context="update" id="1000000000000-40" author="henry">
         <comment>
             Changing locOdour to lochiaOdourFoul. Resolves #606
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="name" value="lochiaOdourFoul"  />
             <where>id=10000000000518</where>
         </update>
@@ -679,7 +679,7 @@
         <comment>
             Changing IPTi from BOOLEAN to NUMERIC. Resolves #797
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="parameter_type" value="NUMERIC" />
             <column name="length" value="2" />
             <where>id=10000000000914</where>
@@ -689,7 +689,7 @@
         <comment>
             Changing IPTi parameter name to iptiDose. Resolves #797
         </comment>
-        <update tableName="incoming_message_form_parameter_definition">
+        <update tableName="motechmodule_incoming_message_form_parameter_definition">
             <column name="name" value="iptiDose" />
             <where>id=10000000000914</where>
         </update>

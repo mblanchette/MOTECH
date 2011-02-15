@@ -42,7 +42,7 @@
   <typedef class="org.motechproject.mobile.core.util.StringEnumUserType" name="messageType">
     <param name="enumClassname">org.motechproject.mobile.core.model.MessageType</param>
   </typedef>
-  <class name="MessageRequestImpl" table="message_request">
+  <class name="MessageRequestImpl" table="motechmodule_message_request">
     <id column="id" name="id" type="long">
       <generator class="assigned"/>
     </id>
@@ -69,7 +69,7 @@
     <property generated="always" insert="false" name="lastModified" update="false">
       <column default="current_timestamp" name="last_modified" sql-type="timestamp"/>
     </property>
-    <set name="persInfos" table="personalization_info">
+    <set name="persInfos" table="motechmodule_personalization_info">
       <key column="requestId"/>
       <composite-element class="org.motechproject.ws.NameValuePair">
         <property column="name" name="name" not-null="true" type="string"/>

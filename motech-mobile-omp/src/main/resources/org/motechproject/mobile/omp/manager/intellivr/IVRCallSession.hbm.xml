@@ -36,7 +36,7 @@
 
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="org.motechproject.mobile.omp.manager.intellivr">
-	<class name="IVRCallSession" table="ivr_call_session">
+	<class name="IVRCallSession" table="motechmodule_ivr_call_session">
 			<id name="id" column="call_session_id">
 				<generator class="native" />
 			</id>
@@ -50,7 +50,7 @@
 			<property name="state" type="int" column="state" not-null="true"/>
 			<property name="created" type="timestamp" column="created"/>
 			<property name="nextAttempt" type="timestamp" column="next_attempt"/>
-			<set name="messageRequests" table="ivr_call_session_requests">
+			<set name="messageRequests" table="motechmodule_ivr_call_session_requests">
 				<key column="ivr_call_session_id"/>
 				<many-to-many column="message_request_id" class="org.motechproject.mobile.core.model.MessageRequestImpl"/>
 			</set>

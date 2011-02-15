@@ -214,6 +214,20 @@
 
 	<mappingFiles>
 		${omodHbmConfig}
+		GatewayRequest.hbm.xml
+		GatewayRequestDetails.hbm.xml
+		GatewayResponse.hbm.xml
+		IncomingMessage.hbm.xml
+		IncomingMessageForm.hbm.xml
+		IncomingMessageFormDefinition.hbm.xml
+		IncomingMessageFormParameter.hbm.xml
+		IncomingMessageFormParameterDefinition.hbm.xml
+		IncomingMessageResponse.hbm.xml
+		IncomingMessageSession.hbm.xml
+		Language.hbm.xml
+		MessageRequest.hbm.xml
+		MessageTemplate.hbm.xml
+		NotificationType.hbm.xml
 	</mappingFiles>
 
 </module>

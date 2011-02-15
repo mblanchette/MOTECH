@@ -41,5 +41,19 @@
 <hibernate-configuration>
 	<session-factory>
 		${hbmConfig}
+		<mapping resource="GatewayRequest.hbm.xml" />
+		<mapping resource="GatewayRequestDetails.hbm.xml" />
+		<mapping resource="GatewayResponse.hbm.xml" />
+		<mapping resource="IncomingMessage.hbm.xml" />
+		<mapping resource="IncomingMessageForm.hbm.xml" />
+		<mapping resource="IncomingMessageFormDefinition.hbm.xml" />
+		<mapping resource="IncomingMessageFormParameter.hbm.xml" />
+		<mapping resource="IncomingMessageFormParameterDefinition.hbm.xml" />
+		<mapping resource="IncomingMessageResponse.hbm.xml" />
+		<mapping resource="IncomingMessageSession.hbm.xml" />
+		<mapping resource="Language.hbm.xml" />
+		<mapping resource="MessageRequest.hbm.xml" />
+		<mapping resource="MessageTemplate.hbm.xml" />
+		<mapping resource="NotificationType.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

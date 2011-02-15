@@ -307,4 +307,282 @@
 		</sql>
 	</diff>
 
+	<diff>
+		<version>1.0.1</version>
+		<author>Matthew Blanchette</author>
+		<date>February 4 2010</date>
+		<description>
+			Adding tables for Motech mobile.
+		</description>
+		<sql>
+CREATE TABLE `motechmodule_gateway_request_details` (
+  `id` bigint(20) NOT NULL,
+  `obj_vesion` int(11) NOT NULL DEFAULT '0',
+  `message_type` varchar(255) DEFAULT NULL,
+  `message` text,
+  `number_of_pages` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `motechmodule_languages` (
+  `id` bigint(20) NOT NULL,
+  `code` varchar(10) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `code` (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `motechmodule_notification_type` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `description` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `motechmodule_message_request` (
+  `id` bigint(20) NOT NULL,
+  `obj_vesion` int(11) NOT NULL DEFAULT '0',
+  `request_details_id` bigint(20) DEFAULT NULL,
+  `request_id` varchar(255) DEFAULT NULL,
+  `notification_type_id` bigint(20) DEFAULT NULL,
+  `language_id` bigint(20) DEFAULT NULL,
+  `message_type` varchar(255) DEFAULT NULL,
+  `schedule` date DEFAULT NULL,
+  `p113_nData` varchar(255) DEFAULT NULL,
+  `recipient_number` varchar(255) DEFAULT NULL,
+  `phone_number_type` varchar(255) DEFAULT NULL,
+  `recipient_id` varchar(255) DEFAULT NULL,
+  `date_from` datetime DEFAULT NULL,
+  `date_to` datetime DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `date_processed` datetime DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `max_try_number` int(11) DEFAULT NULL,
+  `days_attempted` int(11) DEFAULT NULL,
+  `last_modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `FKF9A8A257C247835` (`notification_type_id`),
+  KEY `FKF9A8A25716C79BE` (`language_id`),
+  KEY `FK81205B94A5644C7C` (`request_details_id`),
+  CONSTRAINT `FKF9A8A25716C79BE` FOREIGN KEY (`language_id`) REFERENCES `motechmodule_languages` (`id`),
+  CONSTRAINT `FKF9A8A257C247835` FOREIGN KEY (`notification_type_id`) REFERENCES `motechmodule_notification_type` (`id`),
+  CONSTRAINT `FK81205B94A5644C7C` FOREIGN KEY (`request_details_id`) REFERENCES `motechmodule_gateway_request_details` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `motechmodule_gateway_request` (
+  `id` bigint(20) NOT NULL,
+  `obj_vesion` int(11) NOT NULL DEFAULT '0',
+  `request_details_id` bigint(20) DEFAULT NULL,
+  `message_request_id` bigint(20) DEFAULT NULL,
+  `recipients_number` varchar(255) DEFAULT NULL,
+  `date_sent` datetime DEFAULT NULL,
+  `date_from` datetime DEFAULT NULL,
+  `date_to` datetime DEFAULT NULL,
+  `try_number` int(11) DEFAULT NULL,
+  `message` text,
+  `request_id` varchar(255) DEFAULT NULL,
+  `message_status` varchar(255) DEFAULT NULL,
+  `last_modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `FK81205B94A5644C7B` (`request_details_id`),
+  KEY `FK81205B94A5644C7A` (`message_request_id`),
+  CONSTRAINT `FK81205B94A5644C7B` FOREIGN KEY (`request_details_id`) REFERENCES `motechmodule_gateway_request_details` (`id`),
+  CONSTRAINT `FK81205B94A5644C7A` FOREIGN KEY (`message_request_id`) REFERENCES `motechmodule_message_request` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `motechmodule_gateway_response` (
+  `id` bigint(20) NOT NULL,
+  `obj_vesion` int(11) NOT NULL DEFAULT '0',
+  `gateway_message_id` varchar(255) DEFAULT NULL,
+  `request_id` varchar(255) DEFAULT NULL,
+  `recipient_number` varchar(255) DEFAULT NULL,
+  `message_status` varchar(255) DEFAULT NULL,
+  `response_text` text,
+  `date_created` datetime DEFAULT NULL,
+  `last_modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `message_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKA612CBDCDD47F282` (`message_id`),
+  CONSTRAINT `FKA612CBDCDD47F282` FOREIGN KEY (`message_id`) REFERENCES `motechmodule_gateway_request` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `motechmodule_incoming_message_form_definition` (
+  `id` bigint(20) NOT NULL,
+  `obj_vesion` int(11) NOT NULL DEFAULT '0',
+  `form_code` varchar(100) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `duplicatable` varchar(255) DEFAULT NULL,
+  `send_response` bit(1) DEFAULT 0,
+  `date_created` datetime DEFAULT NULL,
+  `last_modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `form_code` (`form_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `motechmodule_incoming_message_form` (
+  `id` bigint(20) NOT NULL,
+  `obj_vesion` int(11) NOT NULL DEFAULT '0',
+  `incoming_message_form_definition_id` bigint(20) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `last_modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `message_form_status` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK60811752DCCF2D1` (`incoming_message_form_definition_id`),
+  CONSTRAINT `FK60811752DCCF2D1` FOREIGN KEY (`incoming_message_form_definition_id`) REFERENCES `motechmodule_incoming_message_form_definition` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `motechmodule_incoming_message_response` (
+  `id` bigint(20) NOT NULL,
+  `obj_vesion` int(11) NOT NULL DEFAULT '0',
+  `response_content` text,
+  `date_created` datetime DEFAULT NULL,
+  `last_modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `message_status` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `motechmodule_incoming_message_session` (
+  `id` bigint(20) NOT NULL,
+  `obj_vesion` int(11) NOT NULL DEFAULT '0',
+  `requester_phone` varchar(20) DEFAULT NULL,
+  `form_code` varchar(100) DEFAULT NULL,
+  `date_started` datetime DEFAULT NULL,
+  `date_ended` datetime DEFAULT NULL,
+  `last_activity` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `message_session_status` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `motechmodule_incoming_message` (
+  `id` bigint(20) NOT NULL,
+  `obj_vesion` int(11) NOT NULL DEFAULT '0',
+  `incoming_message_session_id` bigint(20) DEFAULT NULL,
+  `incoming_message_form_id` bigint(20) DEFAULT NULL,
+  `incoming_message_response_id` bigint(20) DEFAULT NULL,
+  `message_content` text,
+  `date_created` datetime DEFAULT NULL,
+  `last_modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `message_status` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `incoming_message_response_id` (`incoming_message_response_id`),
+  KEY `FKA1B318EE97D3332E` (`incoming_message_session_id`),
+  KEY `FKA1B318EE51E8D466` (`incoming_message_response_id`),
+  KEY `FKA1B318EEA9AD8E06` (`incoming_message_form_id`),
+  CONSTRAINT `FKA1B318EEA9AD8E06` FOREIGN KEY (`incoming_message_form_id`) REFERENCES `motechmodule_incoming_message_form` (`id`),
+  CONSTRAINT `FKA1B318EE51E8D466` FOREIGN KEY (`incoming_message_response_id`) REFERENCES `motechmodule_incoming_message_response` (`id`),
+  CONSTRAINT `FKA1B318EE97D3332E` FOREIGN KEY (`incoming_message_session_id`) REFERENCES `motechmodule_incoming_message_session` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `motechmodule_incoming_message_form_parameter_definition` (
+  `id` bigint(20) NOT NULL,
+  `obj_vesion` int(11) NOT NULL DEFAULT '0',
+  `incoming_message_form_definition_id` bigint(20) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `parameter_type` varchar(50) DEFAULT NULL,
+  `length` int(11) DEFAULT NULL,
+  `required` bit(1) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `last_modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `FK584F18332DCCF2D1` (`incoming_message_form_definition_id`),
+  CONSTRAINT `FK584F18332DCCF2D1` FOREIGN KEY (`incoming_message_form_definition_id`) REFERENCES `motechmodule_incoming_message_form_definition` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `motechmodule_incoming_message_form_parameter` (
+  `id` bigint(20) NOT NULL,
+  `obj_vesion` int(11) NOT NULL DEFAULT '0',
+  `incoming_message_from_message_definition_id` bigint(20) DEFAULT NULL,
+  `incoming_message_form_id` bigint(20) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `value` varchar(100) DEFAULT NULL,
+  `err_code` int(11) DEFAULT NULL,
+  `err_text` varchar(200) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `last_modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `message_form_status` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK742C315F96177926` (`incoming_message_from_message_definition_id`),
+  KEY `FK742C315FA9AD8E06` (`incoming_message_form_id`),
+  CONSTRAINT `FK742C315FA9AD8E06` FOREIGN KEY (`incoming_message_form_id`) REFERENCES `motechmodule_incoming_message_form` (`id`),
+  CONSTRAINT `FK742C315F96177926` FOREIGN KEY (`incoming_message_from_message_definition_id`) REFERENCES `motechmodule_incoming_message_form_parameter_definition` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `motechmodule_message_template` (
+  `id` bigint(20) NOT NULL,
+  `obj_vesion` int(11) NOT NULL DEFAULT '0',
+  `date_created` datetime DEFAULT NULL,
+  `message_type` varchar(255) DEFAULT NULL,
+  `template` text,
+  `notification_type` bigint(20) DEFAULT NULL,
+  `language` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK41715B2D5781D57` (`notification_type`),
+  KEY `FK41715B2E7550DB4` (`language`),
+  CONSTRAINT `FK41715B2E7550DB4` FOREIGN KEY (`language`) REFERENCES `motechmodule_languages` (`id`),
+  CONSTRAINT `FK41715B2D5781D57` FOREIGN KEY (`notification_type`) REFERENCES `motechmodule_notification_type` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `motechmodule_personalization_info` (
+  `requestId` bigint(20) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `value` varchar(255) NOT NULL,
+  PRIMARY KEY (`requestId`,`name`,`value`),
+  KEY `FK7233DE9E60D8876` (`requestId`),
+  CONSTRAINT `FK7233DE9E60D8876` FOREIGN KEY (`requestId`) REFERENCES `motechmodule_message_request` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table motechmodule_ivr_call_session (
+	call_session_id bigint(20) not null auto_increment, 
+	version int(11) not null, 
+	user_id varchar(255) not null, 
+	phone varchar(255), 
+	language varchar(255), 
+	call_direction varchar(255) not null, 
+	attempts int(11) not null, 
+	days int(11) not null, 
+	state int(11) not null, 
+	created datetime, 
+	next_attempt datetime, 
+	primary key (call_session_id)
+);
+
+create table motechmodule_ivr_call (
+	ivr_call_id bigint(20) not null auto_increment, 
+	version int(11) not null, 
+	created datetime, 
+	connected datetime, 
+	disconnected datetime, 
+	duration int(11), 
+	external_id varchar(255) not null, 
+	status varchar(255), 
+	status_reason varchar(255), 
+	ivr_call_session bigint(20) not null, 
+	constraint FKC56C6178DC5C6D13 foreign key (ivr_call_session) references motechmodule_ivr_call_session (call_session_id),
+	primary key (ivr_call_id)
+);
+
+create table motechmodule_ivr_call_session_requests (
+	ivr_call_session_id bigint(20) not null, 
+	message_request_id bigint(20) not null, 
+	constraint FK9A4BB734893C52A foreign key (message_request_id) references motechmodule_message_request (id),
+	constraint FK9A4BB7343FDB92CF foreign key (ivr_call_session_id) references motechmodule_ivr_call_session (call_session_id),
+	primary key (ivr_call_session_id, message_request_id)
+);
+
+create table motechmodule_ivr_menu (
+	ivr_menu_id bigint(20) not null auto_increment, 
+	version int(11) not null, 
+	name varchar(255), 
+	entryTime datetime, 
+	duration int(11), 
+	key_pressed varchar(255), 
+	recording varchar(255), 
+      	ivr_call_id bigint(20),	
+	constraint FKC570FC79FC424934 foreign key (ivr_call_id) references motechmodule_ivr_call (ivr_call_id),
+	primary key (ivr_menu_id)
+);
+		</sql>
+	</diff>
+
 </sqldiff>
