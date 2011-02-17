@@ -621,15 +621,9 @@ public class RegistrarWebService implements RegistrarService {
 	public Care[] queryANCDefaulters(Integer staffId, Integer facilityId)
 			throws ValidationException {
 
-		ValidationErrors errors = new ValidationErrors();
-
-		validateStaffId(staffId, errors, "StaffID");
-		Facility facility = validateFacility(facilityId, errors, "FacilityID");
-
-		if (errors.getErrors().size() > 0) {
-			throw new ValidationException(
-					"Errors in ANC Defaulters Query request", errors);
-		}
+		// No validation on staff and facility IDs
+		// No restrictions by facility
+		Facility facility = null;
 
 		List<ExpectedEncounter> defaultedEncounters = expectedCareBean
 				.getDefaultedExpectedEncounters(facility,

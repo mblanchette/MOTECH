@@ -1817,19 +1817,13 @@ public class RegistrarServiceTest {
 		List<ExpectedEncounter> expectedEncounters = new ArrayList<ExpectedEncounter>();
 		List<ExpectedObs> expectedObs = new ArrayList<ExpectedObs>();
 
-		Facility facility = new Facility();
+		Facility facility = null;
 
 		Care encounterCare = new Care();
 		encounterCare.setName("EncounterCare");
 		Care obsCare = new Care();
 		obsCare.setName("ObsCare");
 		Care[] defaultedCares = { encounterCare, obsCare };
-
-		expect(idBean.isValidIdCheckDigit(staffId)).andReturn(true);
-		expect(openmrsBean.getStaffBySystemId(staffId.toString())).andReturn(
-				new User(1));
-		expect(idBean.isValidIdCheckDigit(facilityId)).andReturn(true);
-		expect(locationBean.getFacilityById(facilityId)).andReturn(facility);
 
 		expect(
 				expectedCareBean.getDefaultedExpectedEncounters(eq(facility),
