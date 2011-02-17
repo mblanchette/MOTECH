@@ -217,6 +217,13 @@ public class IMPServiceImpl implements IMPService {
         if (!this.formProcessSuccess.equalsIgnoreCase(responseContent)) {
              throw new MessageProcessException(responseContent);
         }*/
+        
+        // Send Query response
+        if (incomingMessage.getIncomingMessageForm() != null && 
+        		incomingMessage.getIncomingMessageForm().getIncomingMsgFormDefinition().getSendResponse() && 
+        		incomingMessage.getIncomingMessageForm().getMessageFormStatus() == IncMessageFormStatus.SERVER_VALID) {
+            sendResponse(response.getContent(), response.getIncomingMessage().getIncomingMsgSession().getRequesterPhone());
+        }
 
         return response;
     }
