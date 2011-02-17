@@ -87,7 +87,7 @@ public class SMSMessageFormatterImpl implements MessageFormatter {
             data.add(new NameValuePair("MoTeCHID" + num, p.getMotechId()));
             data.add(new NameValuePair("Community" + num, p.getCommunity()));
 
-            template += "\n<PreferredName" + num + "> <LastName" + num + ">-<MoTeCHID" + num + "> (<Community" + num + ">)";
+            template += "\n<PreferredName" + num + "> <LastName" + num + ">";
 
             num++;
         }

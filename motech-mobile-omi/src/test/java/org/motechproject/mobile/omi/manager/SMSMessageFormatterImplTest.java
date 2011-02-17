@@ -135,7 +135,7 @@ public class SMSMessageFormatterImplTest {
         assertEquals(expResult, result);
 
         c.setPatients(new Patient[]{p, p1});
-        expResult = "Care Defaulters:\nTest Patient-1234567 (Community)\nBaby Boy Patient-1234561 (Community)";
+        expResult = "Care Defaulters:\nTest Patient\nBaby Boy Patient";
 
         expect(
                 mockOMI.createMessageStoreManager()
@@ -160,7 +160,7 @@ public class SMSMessageFormatterImplTest {
 
         Care[] cares = new Care[]{c, c1};
 
-        String expResult = "Care Defaulters:\nTest Patient-1234567 (Community)\nBaby Boy Patient-1234561 (Community)\n\nCare1 Defaulters:\nLittle Patient-1234562 (Community)";
+        String expResult = "Care Defaulters:\nTest Patient\nBaby Boy Patient\n\nCare1 Defaulters:\nLittle Patient";
 
         expect(
                 mockOMI.createMessageStoreManager()
