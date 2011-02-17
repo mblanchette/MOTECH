@@ -35,12 +35,18 @@ package org.motechproject.server.omod.web.model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.motechproject.server.model.Community;
+import org.motechproject.server.model.ExpectedEncounter;
+import org.motechproject.server.model.ExpectedObs;
 import org.motechproject.server.svc.MessageBean;
 import org.motechproject.server.svc.OpenmrsBean;
 import org.motechproject.server.util.GenderTypeConverter;
@@ -275,6 +281,57 @@ public class WebModelConverterImpl implements WebModelConverter {
 
 		webPatient.setDueDate(openmrsBean.getActivePregnancyDueDate(patient
 				.getPatientId()));
+	}
+
+	public WebSimplePatient patientToSimpleWeb(Patient patient) {
+
+		WebSimplePatient webPatient = new WebSimplePatient();
+		webPatient.setId(patient.getPatientId());
+
+		PersonName name = patient.getPersonName();
+		if (name != null) {
+			webPatient.setName(name.toString());
+		}
+		return webPatient;
+	}
+
+	public List<WebSimplePatient> expectedToWebPatients(
+			List<ExpectedEncounter> expectedEncounters,
+			List<ExpectedObs> expectedObservations) {
+		Map<Integer, WebSimplePatient> patients = new HashMap<Integer, WebSimplePatient>();
+
+		for (ExpectedEncounter expectedEncounter : expectedEncounters) {
+			WebCare care = new WebCare();
+			care.setName(expectedEncounter.getName());
+			care.setDueDate(expectedEncounter.getDueEncounterDatetime());
+			care.setLateDate(expectedEncounter.getLateEncounterDatetime());
+
+			Patient patient = expectedEncounter.getPatient();
+			Integer patientId = patient.getPatientId();
+			WebSimplePatient webPatient = patients.get(patientId);
+			if (webPatient == null) {
+				webPatient = patientToSimpleWeb(patient);
+			}
+			webPatient.addCare(care);
+			patients.put(patientId, webPatient);
+		}
+		for (ExpectedObs expectedObs : expectedObservations) {
+			WebCare care = new WebCare();
+			care.setName(expectedObs.getName());
+			care.setDueDate(expectedObs.getDueObsDatetime());
+			care.setLateDate(expectedObs.getLateObsDatetime());
+
+			Patient patient = expectedObs.getPatient();
+			Integer patientId = patient.getPatientId();
+			WebSimplePatient webPatient = patients.get(patientId);
+			if (webPatient == null) {
+				webPatient = patientToSimpleWeb(patient);
+			}
+			webPatient.addCare(care);
+			patients.put(patientId, webPatient);
+		}
+
+		return new ArrayList<WebSimplePatient>(patients.values());
 	}
 
 }

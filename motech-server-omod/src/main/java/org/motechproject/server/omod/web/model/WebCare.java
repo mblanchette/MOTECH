@@ -33,20 +33,36 @@
 
 package org.motechproject.server.omod.web.model;
 
-import java.util.List;
+import java.util.Date;
 
-import org.motechproject.server.model.ExpectedEncounter;
-import org.motechproject.server.model.ExpectedObs;
-import org.openmrs.Patient;
+public class WebCare {
 
-public interface WebModelConverter {
+	String name;
+	Date dueDate;
+	Date lateDate;
 
-	void patientToWeb(Patient patient, WebPatient webPatient);
+	public String getName() {
+		return name;
+	}
 
-	WebSimplePatient patientToSimpleWeb(Patient patient);
+	public void setName(String name) {
+		this.name = name;
+	}
 
-	List<WebSimplePatient> expectedToWebPatients(
-			List<ExpectedEncounter> expectedEncounters,
-			List<ExpectedObs> expectedObservations);
+	public Date getDueDate() {
+		return dueDate;
+	}
+
+	public void setDueDate(Date dueDate) {
+		this.dueDate = dueDate;
+	}
+
+	public Date getLateDate() {
+		return lateDate;
+	}
+
+	public void setLateDate(Date lateDate) {
+		this.lateDate = lateDate;
+	}
 
 }

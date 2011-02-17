@@ -33,20 +33,40 @@
 
 package org.motechproject.server.omod.web.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.motechproject.server.model.ExpectedEncounter;
-import org.motechproject.server.model.ExpectedObs;
-import org.openmrs.Patient;
+public class WebSimplePatient {
 
-public interface WebModelConverter {
+	Integer id;
+	String name;
+	List<WebCare> cares = new ArrayList<WebCare>();
 
-	void patientToWeb(Patient patient, WebPatient webPatient);
+	public Integer getId() {
+		return id;
+	}
 
-	WebSimplePatient patientToSimpleWeb(Patient patient);
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-	List<WebSimplePatient> expectedToWebPatients(
-			List<ExpectedEncounter> expectedEncounters,
-			List<ExpectedObs> expectedObservations);
+	public String getName() {
+		return name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<WebCare> getCares() {
+		return cares;
+	}
+
+	public void setCares(List<WebCare> cares) {
+		this.cares = cares;
+	}
+
+	public void addCare(WebCare care) {
+		this.cares.add(care);
+	}
 }

@@ -33,34 +33,38 @@
 
 --%>
 
-<ul id="menu">
-	<openmrs:hasPrivilege privilege="View Administration Functions">
-		<li	class="first">
-			<a href="${pageContext.request.contextPath}/admin"><spring:message code="admin.title.short"/></a>
-		</li>
-	</openmrs:hasPrivilege>
-	<openmrs:hasPrivilege privilege="Register MoTeCH Patient">
-		<li <c:if test='<%= request.getRequestURI().contains("demo-patient") %>'>class="active"</c:if>>
-			<a href="${pageContext.request.contextPath}/module/motechmodule/demo-patient.form">
-				<spring:message code="motechmodule.Demo.Patient.register"/>
-			</a>
-		</li>
-		<li <c:if test='<%= request.getRequestURI().contains("demo-enrollpatient") %>'>class="active"</c:if>>
-			<a href="${pageContext.request.contextPath}/module/motechmodule/demo-enrollpatient.form">
-				<spring:message code="motechmodule.Demo.Patient.enroll"/>
-			</a>
-		</li>
-		<li <c:if test='<%= request.getRequestURI().contains("message-patient") %>'>class="active"</c:if>>
-			<a href="${pageContext.request.contextPath}/module/motechmodule/message-patient.form">
-				<spring:message code="motechmodule.Demo.Patient.message"/>
-			</a>
-		</li>
-	</openmrs:hasPrivilege>
-	<openmrs:hasPrivilege privilege="View Patients">
-		<li <c:if test='<%= request.getRequestURI().contains("care") %>'>class="active"</c:if>>
-			<a href="${pageContext.request.contextPath}/module/motechmodule/care.form">
-				<spring:message code="motechmodule.Care.view"/>
-			</a>
-		</li>
-	</openmrs:hasPrivilege>
-</ul>
+<%@ include file="/WEB-INF/template/include.jsp"%>
+
+<openmrs:require privilege="View Patients" otherwise="/login.htm" redirect="/module/motechmodule/care.form" />
+
+<%@ include file="/WEB-INF/template/header.jsp"%>
+
+<meta name="heading" content="Care Schedules" />
+<%@ include file="demoLocalHeader.jsp" %>
+
+<h2>Care Schedules</h2>
+<c:forEach items="${patients}" var="patient">
+<div>
+<h3>Patient ${patient.id}: ${patient.name}</h3>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Due Date</th>
+			<th>Late Date</th>
+		</tr>
+	</thead>
+	<tbody>
+		<c:forEach items="${patient.cares}" var="care">
+			<tr>
+				<td>${care.name}</td>
+				<td><openmrs:formatDate date="${care.dueDate}" format="yyyy-MM-dd" /></td>
+				<td><openmrs:formatDate date="${care.lateDate}" format="yyyy-MM-dd" /></td>
+			</tr>
+		</c:forEach>
+	</tbody>
+</table>
+</div>
+</c:forEach>
+
+<%@ include file="/WEB-INF/template/footer.jsp"%>

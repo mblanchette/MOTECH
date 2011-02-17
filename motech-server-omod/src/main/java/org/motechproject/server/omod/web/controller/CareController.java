@@ -31,22 +31,45 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.motechproject.server.omod.web.model;
+package org.motechproject.server.omod.web.controller;
 
 import java.util.List;
 
 import org.motechproject.server.model.ExpectedEncounter;
 import org.motechproject.server.model.ExpectedObs;
-import org.openmrs.Patient;
+import org.motechproject.server.omod.web.model.WebModelConverter;
+import org.motechproject.server.omod.web.model.WebSimplePatient;
+import org.motechproject.server.svc.ExpectedCareBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-public interface WebModelConverter {
+@Controller
+@RequestMapping("/module/motechmodule/care")
+public class CareController {
 
-	void patientToWeb(Patient patient, WebPatient webPatient);
+	@Autowired
+	private ExpectedCareBean expectedCareBean;
 
-	WebSimplePatient patientToSimpleWeb(Patient patient);
+	@Autowired
+	private WebModelConverter webModelConverter;
 
-	List<WebSimplePatient> expectedToWebPatients(
-			List<ExpectedEncounter> expectedEncounters,
-			List<ExpectedObs> expectedObservations);
+	@ModelAttribute("patients")
+	public List<WebSimplePatient> getPatients() {
+
+		List<ExpectedEncounter> expectedEncounters = expectedCareBean
+				.getExpectedEncounters(null);
+		List<ExpectedObs> expectedObs = expectedCareBean.getExpectedObs(null);
+
+		return webModelConverter.expectedToWebPatients(expectedEncounters,
+				expectedObs);
+	}
+
+	@RequestMapping(method = RequestMethod.GET)
+	public String viewCare() {
+		return "/module/motechmodule/care";
+	}
 
 }
