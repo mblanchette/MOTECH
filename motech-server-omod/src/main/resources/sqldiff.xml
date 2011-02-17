@@ -271,7 +271,19 @@
 			
 		</sql>
 	</diff>
-	
+
+	<diff>
+		<version>0.8.0</version>
+		<author>Matthew Blanchette</author>
+		<date>Sept 3 2010</date>
+		<description>
+			Adding retired column on communites.
+		</description>
+		<sql>
+			ALTER TABLE `motechmodule_community` ADD COLUMN `retired` boolean NOT NULL DEFAULT 0;
+		</sql>
+	</diff>
+
 	<diff>
 		<version>1.0.0</version>
 		<author>Matthew Blanchette</author>
