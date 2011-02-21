@@ -50,7 +50,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.motechproject.general</groupId>
-			<artifactId>motech-mobile-modemgw</artifactId>
+			<artifactId>motech-mobile-smslibgw</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<scope>runtime</scope>
 		</dependency>

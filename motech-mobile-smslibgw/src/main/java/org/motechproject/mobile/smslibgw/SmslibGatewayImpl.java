@@ -31,7 +31,7 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.motechproject.mobile.modemgw;
+package org.motechproject.mobile.smslibgw;
 
 import java.util.Set;
 
@@ -48,6 +48,7 @@ import org.motechproject.mobile.omp.manager.GatewayManager;
 import org.motechproject.mobile.omp.manager.GatewayMessageHandler;
 import org.motechproject.mobile.omp.manager.utils.MessageStatusStore;
 import org.smslib.AGateway;
+import org.smslib.GatewayException;
 import org.smslib.IInboundMessageNotification;
 import org.smslib.IOutboundMessageNotification;
 import org.smslib.InboundMessage;
@@ -55,29 +56,24 @@ import org.smslib.OutboundMessage;
 import org.smslib.Service;
 import org.smslib.Message.MessageTypes;
 import org.smslib.OutboundMessage.MessageStatuses;
-import org.smslib.modem.SerialModemGateway;
 
 /**
  * An implementation of both the sending and receiving side of the MoTeCH mobile
- * messaging interfaces, to work with a serial modem via smslib.
+ * messaging interfaces, to work with a gateway via smslib. Subclasses must
+ * define the smslib gateway implementation to use.
  * 
  * @author batkinson
+ * @author mblanchette
  * 
  */
-public class ModemGatewayImpl implements GatewayManager,
+public class SmslibGatewayImpl implements GatewayManager,
 		IInboundMessageNotification, IOutboundMessageNotification {
 
-	private Log log = LogFactory.getLog(ModemGatewayImpl.class);
+	private Log log = LogFactory.getLog(SmslibGatewayImpl.class);
 	private Service service;
-	private AGateway modemGateway;
+	private AGateway aGateway;
 	private GatewayMessageHandler messageHandler;
 	private IMPService inboundService;
-
-	private String modemId = "motech.modem";
-	private String comPort = "COM5";
-	private int baudRate = 115200;
-	private String manufacturer = null;
-	private String model = null;
 
 	private boolean acceptIncoming = false;
 	private boolean acceptOutgoing = true;
@@ -92,35 +88,14 @@ public class ModemGatewayImpl implements GatewayManager,
 		this.acceptOutgoing = acceptOutgoing;
 	}
 
-	public void setComPort(String comPort) {
-		this.comPort = comPort;
-	}
-
-	public void setBaudRate(int baudRate) {
-		this.baudRate = baudRate;
-	}
-
-	public void setManufacturer(String manufacturer) {
-		this.manufacturer = manufacturer;
-	}
-
-	public void setModel(String model) {
-		this.model = model;
-	}
-
 	public void setInboundService(IMPService inboundService) {
 		this.inboundService = inboundService;
-	}
-
-	public void setModemId(String modemId) {
-		this.modemId = modemId;
 	}
 
 	public void setStatusStore(MessageStatusStore statusStore) {
 		this.statusStore = statusStore;
 	}
 
-	@SuppressWarnings("unchecked")
 	public Set<GatewayResponse> sendMessage(GatewayRequest messageDetails) {
 
 		String requestId = messageDetails.getRequestId();
@@ -131,7 +106,8 @@ public class ModemGatewayImpl implements GatewayManager,
 		if (acceptOutgoing) {
 
 			OutboundMessage message = new OutboundMessage(messageDetails
-					.getRecipientsNumber(), messageDetails.getMessage());
+					.getRecipientsNumber(),
+					handleOutboundMessageText(messageDetails.getMessage()));
 
 			// Use requestId for message id rather than generating another
 			message.setId(requestId);
@@ -155,6 +131,14 @@ public class ModemGatewayImpl implements GatewayManager,
 	}
 
 	/**
+	 * Modifies the outbound message text as needed for the gateway
+	 * implementation. Default, no changes are made to the text.
+	 */
+	String handleOutboundMessageText(String messageText) {
+		return messageText;
+	}
+
+	/**
 	 * Initializes the gateway by starting the smslib service with a modem
 	 * gateway configured with the set properties. It is called after properties
 	 * are wired in.
@@ -165,23 +149,31 @@ public class ModemGatewayImpl implements GatewayManager,
 	void init() throws Exception {
 		service = new Service();
 
-		modemGateway = new SerialModemGateway(modemId, comPort, baudRate,
-				manufacturer, model);
-
-		modemGateway.setOutbound(acceptOutgoing);
+		aGateway = createGateway();
+		aGateway.setOutbound(acceptOutgoing);
 
 		if (acceptOutgoing) {
 			service.setOutboundMessageNotification(this);
 		}
 
-		modemGateway.setInbound(acceptIncoming);
+		aGateway.setInbound(acceptIncoming);
 
 		if (acceptIncoming) {
 			service.setInboundMessageNotification(this);
 		}
 
-		service.addGateway(modemGateway);
+		service.addGateway(aGateway);
 		service.startService();
+	}
+
+	/**
+	 * Creates the gateway implementation to use. Throws an exception no gateway
+	 * implementation is defined or fails to create instance.
+	 * 
+	 * @throws GatewayException
+	 */
+	AGateway createGateway() throws GatewayException {
+		throw new GatewayException("No gateway implementation specified");
 	}
 
 	/**

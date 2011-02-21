@@ -37,7 +37,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-	<bean id="modemResponseMap" class="java.util.HashMap">
+	<bean id="smslibResponseMap" class="java.util.HashMap">
 		<constructor-arg>
 			<map>
 				<entry key="UNSENT">
@@ -71,19 +71,30 @@
 		</constructor-arg>
 	</bean>
 
-	<bean id="modemMessageHandler" class="org.motechproject.mobile.modemgw.ModemGatewayMessageHandlerImpl">
+	<bean id="smslibMessageHandler" class="org.motechproject.mobile.smslibgw.SmslibGatewayMessageHandlerImpl">
 		<property name="coreManager" ref="coreManager" />
-		<property name="responseMap" ref="modemResponseMap" />
-		<property name="statusMap" ref="modemResponseMap" />
+		<property name="responseMap" ref="smslibResponseMap" />
+		<property name="statusMap" ref="smslibResponseMap" />
 	</bean>
 
-	<bean id="modemGateway" class="org.motechproject.mobile.modemgw.ModemGatewayImpl" lazy-init="true">
+	<bean id="modemGateway" class="org.motechproject.mobile.smslibgw.ModemGatewayImpl" lazy-init="true">
 		<property name="manufacturer" value="MultiTech" />
 		<property name="comPort" value="COM4" />
 		<property name="acceptOutgoing" value="true" />
 		<property name="acceptIncoming" value="true" />
 		<property name="inboundService" ref="impService" />
-		<property name="messageHandler" ref="modemMessageHandler" />
+		<property name="messageHandler" ref="smslibMessageHandler" />
+		<property name="statusStore">
+			<bean class="org.motechproject.mobile.omp.manager.utils.InMemoryMessageStatusStore" />
+		</property>
+	</bean>
+
+	<bean id="bulkSmsGateway" class="org.motechproject.mobile.smslibgw.BulkSmsGatewayImpl" lazy-init="true">
+		<property name="username" value="${bulksms.gateway.username}" />
+		<property name="password" value="${bulksms.gateway.password}" />
+		<property name="acceptOutgoing" value="true" />
+		<property name="acceptIncoming" value="false" />
+		<property name="messageHandler" ref="smslibMessageHandler" />
 		<property name="statusStore">
 			<bean class="org.motechproject.mobile.omp.manager.utils.InMemoryMessageStatusStore" />
 		</property>

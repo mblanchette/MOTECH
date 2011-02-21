@@ -31,7 +31,7 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.motechproject.mobile.modemgw;
+package org.motechproject.mobile.smslibgw;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -44,7 +44,7 @@ import org.motechproject.mobile.core.model.GatewayResponse;
 import org.motechproject.mobile.core.model.MStatus;
 import org.motechproject.mobile.omp.manager.GatewayMessageHandler;
 
-public class ModemGatewayMessageHandlerImpl implements GatewayMessageHandler {
+public class SmslibGatewayMessageHandlerImpl implements GatewayMessageHandler {
 
 	CoreManager coreManager;
 
@@ -79,7 +79,6 @@ public class ModemGatewayMessageHandlerImpl implements GatewayMessageHandler {
 		return status != null ? status : defaultStatus;
 	}
 
-	@SuppressWarnings("unchecked")
 	public Set<GatewayResponse> parseMessageResponse(GatewayRequest msg,
 			String gatewayResponse) {
 
