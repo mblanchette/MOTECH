@@ -98,6 +98,10 @@ public class SMSMessageFormatterImpl implements MessageFormatter {
     public String formatDefaulterMessage(Care[] cares) {
         String result = "";
 
+        if (cares == null || cares.length == 0) {
+            return "No defaulters found";
+        }
+        
         for (Care c : cares) {
             result += formatDefaulterMessage(c) + "\n\n";
         }
