@@ -218,7 +218,7 @@ public class IMPServiceImplTest {
         String expResult = "233244000000";
 
         instance.setDefaultCountryCode("233");
-        instance.setLocalNumberExpression("0[0-9]{9}");
+        instance.setLocalNumberExpression("0([0-9]{9})");
         String result = instance.formatPhoneNumber(number);        
         assertEquals(result, expResult);
 

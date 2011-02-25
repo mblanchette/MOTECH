@@ -40,6 +40,7 @@ package org.motechproject.mobile.imp.serivce;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
@@ -298,10 +299,17 @@ public class IMPServiceImpl implements IMPService {
         if (requesterPhone == null || requesterPhone.isEmpty()) {
             return null;
         }
-
+        
+        Pattern pattern = Pattern.compile(localNumberExpression);
+        Matcher matcher = pattern.matcher(requesterPhone);
+        
         String formattedNumber = requesterPhone;
-        if (Pattern.matches(localNumberExpression, requesterPhone)) {
-            formattedNumber = defaultCountryCode + requesterPhone.substring(1);
+        if( matcher.matches() ) {
+        	if( matcher.groupCount() > 0 ) {
+        		formattedNumber = defaultCountryCode + matcher.group(1);
+        	} else {
+        		formattedNumber = defaultCountryCode + requesterPhone;
+        	}
         }
 
         return formattedNumber;
