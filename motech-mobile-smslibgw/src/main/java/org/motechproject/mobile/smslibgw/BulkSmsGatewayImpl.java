@@ -115,6 +115,17 @@ public class BulkSmsGatewayImpl extends SmslibGatewayImpl {
 	}
 
 	/**
+	 * Verifies the recipient starts with prefix '+'.
+	 */
+	@Override
+	String handleOutboundMessageRecipient(String recipient) {
+		if (recipient != null && !recipient.startsWith("+")) {
+			return "+" + recipient;
+		}
+		return recipient;
+	}
+
+	/**
 	 * Encodes the outbound message text so that the HTTP sending operation
 	 * succeeds when strange characters are present. Returns original message if
 	 * encoding fails.

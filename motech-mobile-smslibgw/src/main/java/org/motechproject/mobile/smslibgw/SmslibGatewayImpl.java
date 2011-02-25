@@ -105,8 +105,9 @@ public class SmslibGatewayImpl implements GatewayManager,
 
 		if (acceptOutgoing) {
 
-			OutboundMessage message = new OutboundMessage(messageDetails
-					.getRecipientsNumber(),
+			OutboundMessage message = new OutboundMessage(
+					handleOutboundMessageRecipient(messageDetails
+							.getRecipientsNumber()),
 					handleOutboundMessageText(messageDetails.getMessage()));
 
 			// Use requestId for message id rather than generating another
@@ -128,6 +129,14 @@ public class SmslibGatewayImpl implements GatewayManager,
 		}
 
 		return null;
+	}
+
+	/**
+	 * Modifies the outbound message recipient as needed for the gateway
+	 * implementation. Default, no changes are made to the recipient.
+	 */
+	String handleOutboundMessageRecipient(String recipient) {
+		return recipient;
 	}
 
 	/**
