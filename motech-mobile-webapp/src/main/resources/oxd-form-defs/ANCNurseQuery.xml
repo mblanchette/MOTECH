@@ -41,7 +41,7 @@
 &lt;xf:xforms xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;xf:model&gt;
     &lt;xf:instance id="gen-query"&gt;
-      &lt;gen-query id="20" name="General Query"&gt;
+      &lt;gen-query id="22" name="General Query"&gt;
         &lt;chpsid/&gt;
         &lt;facilityid/&gt;
         &lt;formname/&gt;
@@ -52,7 +52,7 @@
     &lt;xf:bind id="chpsid" nodeset="/gen-query/chpsid" required="true()" type="xsd:int" constraint=". &amp;lt; 2147483647" message="Number too large. Keep under 2147483647"/&gt;
     &lt;xf:bind id="facilityid" nodeset="/gen-query/facilityid" required="true()" type="xsd:int" constraint=". &amp;lt; 2147483647" message="Number too large. Keep under 2147483647"/&gt;
     &lt;xf:bind id="formname" nodeset="/gen-query/formname" required="true()" type="xsd:string"/&gt;
-    &lt;xf:bind id="sender" constraint=". &amp;lt; 2147483647" message="Number too large. Keep under 2147483647" nodeset="/gen-query/sender" required="true()" type="xsd:int"/&gt;
+    &lt;xf:bind id="sender" nodeset="/gen-query/sender" required="true()" type="xsd:string" format="phonenumber"/&gt;
     &lt;xf:bind id="formtype" nodeset="/gen-query/formtype" required="true()" type="xsd:string" visible="false()"/&gt;
   &lt;/xf:model&gt;
   &lt;xf:group id="1"&gt;
@@ -79,7 +79,7 @@
   &lt;/xf:group&gt;
 &lt;/xf:xforms&gt;
 </xform>
-<layout>&lt;Form id="20"&gt;
+<layout>&lt;Form id="22"&gt;
   &lt;Page Text="Page1" Binding="Page1" Width="100%" Height="270px" backgroundColor=""&gt;
     &lt;Item WidgetType="Label" Text="Staff ID" HelpText="Staff ID" Binding="chpsid" Left="20px" Top="20px" TabIndex="0" fontFamily="Verdana,'Lucida Grande','Trebuchet MS',Arial,Sans-Serif"/&gt;
     &lt;Item WidgetType="TextBox" HelpText="Staff ID" Binding="chpsid" Left="100px" Top="20px" Width="200px" Height="25px" TabIndex="1" fontFamily="Verdana,'Lucida Grande','Trebuchet MS',Arial,Sans-Serif"/&gt;
@@ -96,7 +96,7 @@
   &lt;/Page&gt;
 &lt;/Form&gt;</layout>
 <versionText locale="en">
-<xform>&lt;xform id="20"&gt;
+<xform>&lt;xform id="22"&gt;
     &lt;text xpath="xforms/model/instance/gen-query[@name]" value="General Query"/&gt;
     &lt;text xpath="xforms/group[@id='1']/label" value="Page1"/&gt;
     &lt;text xpath="xforms/group[@id='1']/input[@bind='chpsid']/label" value="Staff ID"/&gt;
@@ -109,7 +109,7 @@
     &lt;text xpath="xforms/model/bind[@id='facilityid'][@message]" value="Number too large. Keep under 2147483647"/&gt;
     &lt;text xpath="xforms/model/bind[@id='sender'][@message]" value="Number too large. Keep under 2147483647"/&gt;
   &lt;/xform&gt;</xform>
-<layout>&lt;Form id="20"&gt;
+<layout>&lt;Form id="22"&gt;
     &lt;text xpath="Form/Page[@Binding='Page1'][@Text]" value="Page1"/&gt;
   &lt;/Form&gt;</layout>
 </versionText>
