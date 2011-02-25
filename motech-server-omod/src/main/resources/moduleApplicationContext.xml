@@ -98,9 +98,10 @@ class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		</property>
 	</bean>
 
+<!-- messageBean not included, ProxyFactoryBean created instead in registrar-bean.xml -->
 	<bean id="beanAutoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
 		<property name="beanNames">
-			<value>registrarBean,careScheduleAdjuster,openmrsBean,messageBean,expectedCareBean</value>
+			<value>registrarBean,careScheduleAdjuster,openmrsBean,expectedCareBean</value>
 		</property>
 		<property name="interceptorNames">
 			<list>
